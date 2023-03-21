@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useDeleteAllCartMutation, useReadcartsQuery } from './cartApiSlice'
 import Cart from './Cart'
 import { useNavigate } from 'react-router-dom'
+import { selectAllCarts } from './cartApiSlice'
+import Total from './Total'
+import { useSelector } from 'react-redux'
 
 const ReadCarts = () => {
 const navigate = useNavigate()
 
-    const [deleteAllCart, {
+const selectallcart = useSelector(state=> selectAllCarts(state))
+
+const [deleteAllCart, {
         isSuccess:isDelCartSuccess
     }] = useDeleteAllCartMutation()
 
@@ -32,12 +37,9 @@ const navigate = useNavigate()
   let content
   if(isSuccess) {
     const {ids, entities} = carts
-    console.log('lets see price data here',ids)
     const tableData = ids.map(cartId => <Cart key={cartId} cartId={cartId} />)
 
-   /*  cart.price.map(i=> {
-      price=i.price
-    })  */
+   
 
     content = (
      
@@ -59,7 +61,7 @@ const navigate = useNavigate()
 
         </tbody>
       </table>
- 
+      <p>TOTAL:  <Total selectallcart={selectallcart}/></p>
      </>
     )
 

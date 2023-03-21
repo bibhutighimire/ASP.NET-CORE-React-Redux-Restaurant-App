@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useDeleteAllCartMutation, useReadcartsQuery } from './cartApiSlice'
 import Cart from './Cart'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 
 const ReadCarts = () => {
 const navigate = useNavigate()
+
+
 const [showCart, setShowCart] = useState(false)
     const [deleteAllCart, {
         isSuccess:isDelCartSuccess
@@ -48,6 +52,7 @@ navigate('/finalcart')
         </tbody>
        
       </table>
+
         </>
     )
 
@@ -57,6 +62,7 @@ navigate('/finalcart')
     <>
  
      {content}
+  
     </>
   )
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectCartById, useDeleteCartMutation } from './cartApiSlice'
+import { selectAllCarts, selectCartById, useDeleteCartMutation } from './cartApiSlice'
 import { useNavigate } from 'react-router-dom'
+import Total from './Total'
 
 const Cart = ({cartId}) => {
   const navigate = useNavigate()
@@ -14,7 +15,11 @@ const Cart = ({cartId}) => {
     }] = useDeleteCartMutation()
 
   const cart = useSelector(state=> selectCartById(state, cartId))
+ 
+ 
+  
 
+//console.log("CART:",cart)
   useEffect(() => {
     if(isDelSuccess) {
       navigate('/readmenus')
@@ -34,6 +39,7 @@ const Cart = ({cartId}) => {
 
   return (
     <>
+    
     <tr>
 
       <td>{cart.foodName}</td>

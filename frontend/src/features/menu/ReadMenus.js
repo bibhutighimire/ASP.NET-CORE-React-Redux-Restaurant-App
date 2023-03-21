@@ -18,8 +18,8 @@ const navigate = useNavigate()
   let content
   if(isSuccess) {
     const {ids, entities} = menus
-/*     console.log('IDS',ids)
-    console.log('ENTITIES',entities) */
+   console.log('IDS',ids)
+    console.log('ENTITIES',entities)
     const tableData = ids.map(menuId => <Menu key={menuId} menuId={menuId} />)
     content = (
       <>
